@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+}
+
+body > header > section {
+    background-color: dodgerblue;
+    color: white;
+}
+
+#header-nav > ul {
+    list-style: none;
+    color: white;
+}
+
+#header-nav > ul > li > a {
+    color: white;
+}
+
+#main-article {
+    width: 70%;
+    margin: auto;
+}
