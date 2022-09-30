@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+    <form action="/events" method = "post">
+        <div>
+        <label for="event_name">Event Name:</label>
+        <input id="event_name" type="text" name="event_name">
+        </div>
+
+        <div>
+        <label for="room_location">Room location:</label>
+        <input id="room_location" type="text" name="room_location">
+        </div>
+    
+        <div>
+        <label for="description">Description:</label>
+        <textarea id= "description" type="text" name="description" id="" cols="30" rows="10"></textarea>
+        </div>
+
+
+        <div>
+        <label for="number_guests">Number of guests:</label>
+        <input id="number_guests" type="text" name="number_guests">
+        </div>
+        <div>
+            <label for="date">Date:</label>
+            <input id="date" type="text" name="date">
+        </div>
+        <input type="Submit">
+    </form>   
+
+
+  
+   
+    
+
+
+
+
+
+
+    <div class="event-container">
+        {% for event in events %}
+            <div class="event">
+                <h2>{{ event.event_name }}</h2>
+                <h3>{{ event.description}}</h3>
+                <h4>When: {{ event.date.strftime("%b %d %Y") }}</h4>
+                <h5>Location: {{ event.room_location }}</h5>
+
+                <form action="/events/delete/{{ event.event_name }}" method="POST">
+                    <input type="submit" value="Delete">
+                 </form>
+            </div>
+        {% endfor %}
+   </div>
+   
+  {% endblock %}
+
+  <!-- jinja (enjine template for python)-->
+  <!--inject python code in html-->
