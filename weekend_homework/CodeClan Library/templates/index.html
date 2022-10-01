@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+    <main>
+     
+     
+        <div class="book-list">
+            {% for book in book_list %}
+            <div class="book">
+                <h2>Title: {{book.title}}</h2>
+                <h3>Author: {{book.author}}</h3>
+                <h3>Genre: {{book.genre}}</h3>
+                <h4>Return By: {{book.return_by_date}}</h4>
+                <div>
+                    {% if book.checked_out == True %}
+                    
+                    <label for="checked_out">Checked_out:</label>
+                    <input checked type="checkbox" name="checked_out" id="checked_out" value="True">
+                
+                    {% else %}    
+                
+                    <label for="checked_out">Checked_out:</label>
+                    <input type="checkbox" name="checked_out" id="checked_out" value="False">
+            
+                    {% endif %}
+                </div>
+             
+                <div class="remove">
+                    <form action="/books/delete/{{ book.title }}" method="POST">
+                        <input class="remove-btn" type="submit" value="Remove book">
+                    </form>
+                </div>
+               
+                <!--make route dynamic-->
+              
+            </div>
+            {% endfor %}
+        </div>
+        <section class="add-book">
+            <h3 id="add">Add book</h3>
+            <div class="form-wrapper">
+                <form action="/books" method="post">
+                    <div>
+                        <label for="title">Title:</label>
+                        <input class="input" type="text" name="title" id="title">
+                    </div>
+                    <div>
+    
+                        <label for="author">Author:</label>
+                        <input class="input" type="text" name="author" id="author">
+                    </div>
+                    <div>
+    
+                        <label for="genre">Genre:</label>
+                        <input class="input" type="text" name="genre" id="genre">
+                    </div>
+                    <div>
+    
+                        <label for="checked_out">Checked_out:</label>
+                        <input type="checkbox" name="checked_out" id="checked_out" value="False">
+    
+                    </div>    
+                    <div>
+    
+                        <label for="return_by_date">Date:</label>
+                        <input class="input" id="return_by_date" type="text" name="return_by_date">
+                    </div>   
+                    <div class="add-btn-wrapper">
+                        <input class="add-btn" type="submit" value="Add it">   
+                    </div>           
+                   
+           
+                </form>
+
+            </div>
+            
+        
+
+        </section>
+
+        
+          
+    
+    </main>
+
+  
+    
+{% endblock %}

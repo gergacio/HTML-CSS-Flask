@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+        <div class="put-book">
+            <h2>Put Book</h2>
+            <form action="/books/{{index}}" method="post">
+                <div>
+                  <label for="title">Title:</label>
+                  <input class="input" type="text" name="title" id="title" value="{{book.title}}">
+               
+                </div>
+                <div>
+
+                    <label for="author">Author:</label>
+                    <input class="input" type="text" name="author" id="author" value="{{book.author}}">
+               
+                </div>
+                <div>
+                    <label for="genre">Genre:</label>
+                    <input class="input" type="text" name="genre" id="genre" value="{{book.genre}}">
+                </div>
+                <div>
+                    {% if book.checked_out == True %}
+                    
+                    <label for="checked_out">Checked_out:</label>
+                    <input checked type="checkbox" name="checked_out" id="checked_out" value="True">
+                
+                    {% else %}    
+                
+                    <label for="checked_out">Checked_out:</label>
+                    <input type="checkbox" name="checked_out" id="checked_out" value="False">
+            
+                    {% endif %}
+                </div>
+                <div>
+                    <label for="return_by_date">Date:</label>
+                    <input id="return_by_date" type="text" name="return_by_date" value="{{book.return_by_date}}">
+                </div>  
+               
+                <div class="put-btn-wrapper">
+                    <input class="put-btn" type="submit" value="Put it">    
+
+                </div>    
+        
+               
+           
+           </form>
+    
+        </div>
+    
+    
+{% endblock %}
