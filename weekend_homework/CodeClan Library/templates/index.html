@@ -25,6 +25,10 @@
             
                     {% endif %}
                 </div>
+                <div class="update">
+                   
+                    <a class="remove-btn" href="/books/{{book_list.index(book)}}">Update book</a>
+                </div>
              
                 <div class="remove">
                     <form action="/books/delete/{{ book.title }}" method="POST">
